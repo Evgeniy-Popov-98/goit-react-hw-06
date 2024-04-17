@@ -10,9 +10,6 @@ const Contact = ({ contact }) => {
   const onDeleteContact = (contactId) => {
     dispatch(deleteContact(contactId));
   };
-
-  console.log(contact.id);
-
   return (
     <div className={clsx(css.contactBox)}>
       <ul className={clsx(css.contactList)}>

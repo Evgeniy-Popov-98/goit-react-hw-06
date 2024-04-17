@@ -27,9 +27,6 @@ const contactsSlice = createSlice({
       );
       state.contacts.items.splice(contactIndex, 1);
     },
-    // setFilter(state, action) {
-    //   state.filter = action.payload;
-    // },
   },
 });
 
