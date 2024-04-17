@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { nanoid } from "@reduxjs/toolkit";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
+
 import clsx from "clsx";
 import css from "./ContactForm.module.css";
 
@@ -20,9 +24,17 @@ const mailBoxSchema = Yup.object().shape({
     ),
 });
 
-const ContactForm = ({ onAddContact }) => {
-  const handleSubmit = (values, actions) => {
-    onAddContact(values);
+const ContactForm = () => {
+  const dispatch = useDispatch();
+
+  const onAddContact = (values, actions) => {
+    const finalContact = {
+      ...values,
+      id: nanoid(),
+    };
+
+    dispatch(addContact(finalContact));
+
     actions.resetForm();
   };
 
@@ -30,7 +42,7 @@ const ContactForm = ({ onAddContact }) => {
     <Formik
       initialValues={FORM_INITIAL_VALUES}
       validationSchema={mailBoxSchema}
-      onSubmit={handleSubmit}
+      onSubmit={onAddContact}
     >
       <Form className={clsx(css.boxForm)}>
         <label className={clsx(css.labelForm)}>

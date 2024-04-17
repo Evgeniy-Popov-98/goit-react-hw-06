@@ -1,13 +1,17 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
 
 import clsx from "clsx";
 import css from "./Contact.module.css";
 
-const Contact = ({ contact, onDeleteContact }) => {
+const Contact = ({ contact }) => {
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contact.contacts);
 
-  console.log(contacts);
+  const onDeleteContact = (contactId) => {
+    dispatch(deleteContact(contactId));
+  };
+
+  console.log(contact.id);
 
   return (
     <div className={clsx(css.contactBox)}>
