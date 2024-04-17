@@ -7,8 +7,8 @@ import clsx from "clsx";
 import css from "./ContactList.module.css";
 
 const ContactList = () => {
-  const selectContacts = useSelector((state) => state.contacts.contacts.items);
-  const selectNameFilter = useSelector((state) => state.filters.filters.name);
+  const selectContacts = useSelector((state) => state.contacts.items);
+  const selectNameFilter = useSelector((state) => state.filters.name);
 
   const filteredContacts = useMemo(
     () =>
