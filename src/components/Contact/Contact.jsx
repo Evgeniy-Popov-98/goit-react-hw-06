@@ -1,8 +1,14 @@
-/* eslint-disable react/prop-types */
+import { useSelector, useDispatch } from "react-redux";
+
 import clsx from "clsx";
 import css from "./Contact.module.css";
 
 const Contact = ({ contact, onDeleteContact }) => {
+  const dispatch = useDispatch();
+  const contacts = useSelector((state) => state.contact.contacts);
+
+  console.log(contacts);
+
   return (
     <div className={clsx(css.contactBox)}>
       <ul className={clsx(css.contactList)}>
